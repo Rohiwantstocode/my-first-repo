@@ -6,5 +6,14 @@ import App from './App.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
+     < Sayhello />
+
   </StrictMode>,
 )
+
+
+function Sayhello(){
+  return(
+    <p>Say hii</p>
+  )
+}

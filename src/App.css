@@ -1,21 +1,7 @@
-.button{
-    color: white;
+body{
     background-color: black;
-    width: 10rem;
-    height: 3rem;
-    border-radius: 10rem;
-    border:none;
-    font-size: 1rem;
-font-weight: bolder;
-cursor: pointer;
-}
 
-.changeBackgroundColor{
-    background-color:white ;
-    color: black;
 }
-
-.buttoncover{
-    background-color: grey;
-    height: 4rem;
+p{
+    color: white;
 }
