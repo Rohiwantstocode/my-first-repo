@@ -1,7 +1,11 @@
-body{
-    background-color: black;
-
+.circle{
+    display: flex;
 }
-p{
-    color: white;
+button{
+    height: 2rem;
+    border-radius:10rem ;
+    position: relative;
+    border: none;
+    left: 1rem;
+    cursor: pointer;
 }
