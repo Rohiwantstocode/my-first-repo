@@ -1,63 +1,59 @@
-import  { useReducer, useState } from "react"
+import { useReducer, useState } from "react"
 
 import './App.css'
 
+const App =()=>{
+const [arrayOfTasks, SetTasks] = useState([
+  {taskName:'become more logical' , id:1 , completed: false , isEditing: false},
+   {taskName:'learn React' , id:2, completed: false , isEditing: false},
+    {taskName:'finish projects' , id:3 , completed: false , isEditing: false}
+])
+const [numbers , setNumbers] = useState(0)
 
-
-
-
-const App=()=>{
-
-const [task , dispatch] = useReducer(Action , 
- [
-  {id:1 , objective:'learn React' , completed: 'false' ,isEditing:false},
-    {id:2 , objective:'Do some practicals' , completed: 'false' , isEditing:false}
- ]
-)
-
-
-
-function Action(task,action){
-  switch (action.type) {
-    case 'Add-task':
-      return([...task,{id:3, objective:'Your new task' , completed:false}])
-      case 'delete-task':
-        return( task.filter(value=>value.id!==action.id)    )
-        case 'edit-task':
-          return(
-            task.map((values)=>
-            values.isEditing =true
-            )
-          )
+function addNewTask(){
+  SetTasks([
+    ...arrayOfTasks,
+    {taskName:'My New Task' ,id:addNumbers,completed:false  , isEditing: false}
+  ])
+}
+ function addNumbers(){
+  setNumbers(numbers=>numbers+1)
   }
-}
-//mapping out tasks
-const getTasks =task.map((value)=>
 
 
-<div className = 'circle' key={value} >
-  <p>{value.objective}</p>
-{value.isEditing ===false && <button onClick={()=>{dispatch({type:'edit-task'})}}>Edit Task</button>}
-{value.isEditing ===true && <button onClick={()=>{dispatch({type:'save-task'})}}>Save Task</button>}
- <button  onClick={()=>{dispatch({type: 'delete-task' ,id:value.id})}}>Delete Task</button>
-</div> 
-)
-//UI
-  return(
-  <>
-  <h1>Hello User</h1>
-{getTasks}
-  <button onClick={(e)=>{  dispatch({   type:'Add-task' , })}}>Add new Task</button>
-  </>
+ 
+const getTasks = arrayOfTasks.map((values)=>
+  //mapping out objects
+     <div className="circle" key={values}>
+    { !values.isEditing && <p>{values.taskName}</p>}
+     { values.isEditing && <input value={values.taskName}></input>}
+     {/* setting out condtions for  buttons */}
+
+     {/* to edit task */}
+{!values.isEditing &&<button onClick={()=>{SetTasks(arrayOfTasks.map(taskObj=>( {...taskObj,isEditing: true})) ) }}>Edit Task</button> }
+
+    {/* to save edited task */}
+    {values.isEditing && <button onClick={()=>{SetTasks(arrayOfTasks.map(taskObj=> ({...taskObj,isEditing: false})) ) }} >Save Task</button> }    {' '}
+
+    {/* to delete task */}
+       <button onClick={()=>{ SetTasks(arrayOfTasks.filter(value=> value.id !== values.id ))}}>Delete Task</button>
+    </div>
   )
+  // button conditions done
+  // jsx
+  
+ return(
+  <>
+<h1>Hello user</h1>
+{getTasks}
+ <button onClick={addNewTask}>Add new task</button>
+  </>
+ )
 }
 
 
 
 
 
-
-  
 
 export default App
-
