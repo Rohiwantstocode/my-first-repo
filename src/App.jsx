@@ -3,53 +3,82 @@ import { useReducer, useState } from "react"
 import './App.css'
 
 const App =()=>{
-const [arrayOfTasks, SetTasks] = useState([
-  {taskName:'become more logical' , id:1 , completed: false , isEditing: false},
-   {taskName:'learn React' , id:2, completed: false , isEditing: false},
-    {taskName:'finish projects' , id:3 , completed: false , isEditing: false}
+const [arrOfTasks , setArrOfTasks] = useState([
+
+
 ])
-const [numbers , setNumbers] = useState(0)
 
-function addNewTask(){
-  SetTasks([
-    ...arrayOfTasks,
-    {taskName:'My New Task' ,id:addNumbers,completed:false  , isEditing: false}
-  ])
-}
- function addNumbers(){
-  setNumbers(numbers=>numbers+1)
+ const [newTask , setNewTask] = useState('')
+ const [newId , setNewId] = useState(1)
+
+ function getNewId(){
+  setNewId(newId=>newId+1)
+ }
+
+
+const getArray = arrOfTasks.map(values=>
+<>
+<div className="tasks" key={values.id}>
+  <p>{values.name}</p>
+  <button  className ='delete-btn'onClick={
+    ()=>{
+      setArrOfTasks(
+        arrOfTasks.filter(value=>(
+          value.id!==values.id
+
+        ))
+      )
+    }
+  }>&#10008;</button>
+  <button  className ='completed-task'onClick={
+    ()=>{
+      setArrOfTasks(
+        arrOfTasks.filter(value=>(
+          value.id!==values.id
+
+        ))
+      )
+    }
+  }>&#10004;</button>
+</div>
+</>
+)
+console.log(arrOfTasks);
+
+
+return(
+<>
+
+<p className="top-description">Your Tasks </p>
+ <input type="text" 
+ onChange={
+  (e)=>{
+   setNewTask( e.target.value)
   }
-
-
- 
-const getTasks = arrayOfTasks.map((values)=>
-  //mapping out objects
-     <div className="circle" key={values}>
-    { !values.isEditing && <p>{values.taskName}</p>}
-     { values.isEditing && <input value={values.taskName}></input>}
-     {/* setting out condtions for  buttons */}
-
-     {/* to edit task */}
-{!values.isEditing &&<button onClick={()=>{SetTasks(arrayOfTasks.map(taskObj=>( {...taskObj,isEditing: true})) ) }}>Edit Task</button> }
-
-    {/* to save edited task */}
-    {values.isEditing && <button onClick={()=>{SetTasks(arrayOfTasks.map(taskObj=> ({...taskObj,isEditing: false})) ) }} >Save Task</button> }    {' '}
-
-    {/* to delete task */}
-       <button onClick={()=>{ SetTasks(arrayOfTasks.filter(value=> value.id !== values.id ))}}>Delete Task</button>
-    </div>
+ }/>
+ <button className="add-task" onClick={()=>{
+  setArrOfTasks([
+  ...arrOfTasks,
+  {name:newTask , id:getNewId}
+]
   )
-  // button conditions done
-  // jsx
-  
- return(
-  <>
-<h1>Hello user</h1>
-{getTasks}
- <button onClick={addNewTask}>Add new task</button>
-  </>
- )
+ }}>Add task</button>
+
+
+ {/* task List */}
+
+ <div className="task-list">
+ {getArray}
+
+ </div>
+</>
+
+)
 }
+
+
+
+//mapping out tasks
 
 
 

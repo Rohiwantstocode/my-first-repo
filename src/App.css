@@ -1,11 +1,69 @@
-.circle{
+body{
     display: flex;
+   
+    justify-content: center;
 }
-button{
-    height: 2rem;
+input{
+    width: 30rem;
+    height: 5rem;
     border-radius:10rem ;
-    position: relative;
     border: none;
+    background-color: aquamarine;
+    position: relative;
+    top: 2rem;
+    outline: none;
+    color: white;
+    font-size: 2rem;
+}
+
+.top-description{
+    color: aquamarine;
+    font-size: 2rem;
+    position: relative;
+    left: 9rem;
+}
+.add-task{
+    background-color: aquamarine;
+    border: none;
+    color: white;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 10rem;
+    position: relative;
+    top: 2.5rem;
     left: 1rem;
-    cursor: pointer;
+   font-size: 1.1rem;
+}
+
+.task-list{
+ position: relative;
+    top: 7rem;
+    height: 28rem;
+      display: grid;
+    grid-template-columns: auto auto auto;
+   
+}
+.tasks{
+    margin: 0.2rem;
+    color: aquamarine;
+    font-size: 1.5rem;
+  
+}
+
+.delete-btn{
+    background-color: aquamarine;
+    border: none;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 1rem;
+}
+
+.completed-task{
+     background-color: aquamarine;
+    border: none;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 1rem;
+    position: relative;
+    left: .3rem;
 }
